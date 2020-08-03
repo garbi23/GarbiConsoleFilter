@@ -19,8 +19,8 @@ public class GarbiConsoleFilter extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("[-Garbi-]GarbiConsoleFilter 활성화 완료");
-        ((Logger) LogManager.getRootLogger()).addFilter(new LogFilter());
         createConfig();
+        ((Logger) LogManager.getRootLogger()).addFilter(new LogFilter());
         getCommand("gcf").setExecutor(this);
     }
 
