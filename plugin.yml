@@ -1,0 +1,4 @@
+main: garbi.GarbiConsoleFilter
+version: 1.0.3
+api-version: 1.14
+name: GarbiConsoleFilter
