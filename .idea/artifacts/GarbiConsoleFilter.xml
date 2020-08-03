@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GarbiConsoleFilter">
+    <output-path>D:/사용자D드라이브/백업/Minecraft/서버/1.12.2 테스트 플긴/plugins</output-path>
+    <root id="archive" name="GarbiConsoleFilter.jar">
+      <element id="module-output" name="GarbiConsoleFilter" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/Config.yml" />
+    </root>
+  </artifact>
+</component>

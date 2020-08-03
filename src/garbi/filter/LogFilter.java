@@ -1,4 +1,4 @@
-package garbi;
+package garbi.filter;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Marker;
@@ -7,8 +7,19 @@ import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 import org.apache.logging.log4j.message.Message;
 
+import java.util.ArrayList;
+
+import static garbi.var.AllVar.*;
+
 
 public class LogFilter extends AbstractFilter {
+
+    public LogFilter(){
+        list = (ArrayList<String>)customConfig[0].getList("FilterList");
+        if(list == null){
+            list = new ArrayList<String>();
+        }
+    }
 
     @Override
     public Result filter(LogEvent event) {
@@ -32,8 +43,10 @@ public class LogFilter extends AbstractFilter {
 
     private Result isLoggable(String msg) {
         if (msg != null) {
-            if (msg.contains("changed!")) {
-                return Result.DENY;
+            for (String key: list) {
+                if (msg.contains(key)) {
+                    return Result.DENY;
+                }
             }
         }
         return Result.NEUTRAL;
