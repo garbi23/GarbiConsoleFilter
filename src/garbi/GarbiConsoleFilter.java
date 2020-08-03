@@ -13,15 +13,19 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static garbi.var.AllVar.*;
+import static garbi.filtervar.AllVar.*;
 
 public class GarbiConsoleFilter extends JavaPlugin {
+
+    private LogFilter logFilter;
+
     @Override
     public void onEnable() {
         getLogger().info("[-Garbi-]GarbiConsoleFilter 활성화 완료");
         createConfig();
-        ((Logger) LogManager.getRootLogger()).addFilter(new LogFilter());
         getCommand("gcf").setExecutor(this);
+        logFilter = new LogFilter();
+        ((Logger) LogManager.getRootLogger()).addFilter(logFilter);
     }
 
     @Override
@@ -31,15 +35,12 @@ public class GarbiConsoleFilter extends JavaPlugin {
             if (args.length == 0) {
                 p.sendMessage("/gcf reload");
             } else if (args[0].equals("reload")) {
-                if (args.length == 1) {
-                    p.sendMessage("/gcf reload");
-                } else {
+                    customConfig[0] = YamlConfiguration.loadConfiguration(customConfigFile[0]);
                     list = (ArrayList<String>)customConfig[0].getList("FilterList");
                     if(list == null){
                         list = new ArrayList<String>();
                     }
                     p.sendMessage("콘솔필터가 리로드 되었습니다");
-                }
             }
         }
         return false;

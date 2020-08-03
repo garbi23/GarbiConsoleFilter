@@ -9,7 +9,7 @@ import org.apache.logging.log4j.message.Message;
 
 import java.util.ArrayList;
 
-import static garbi.var.AllVar.*;
+import static garbi.filtervar.AllVar.*;
 
 
 public class LogFilter extends AbstractFilter {
@@ -43,11 +43,13 @@ public class LogFilter extends AbstractFilter {
 
     private Result isLoggable(String msg) {
         if (msg != null) {
-            for (String key: list) {
-                if (msg.contains(key)) {
-                    return Result.DENY;
+            try {
+                for (int i = 0; i < list.size(); i++) {
+                    if (msg.contains(list.get(i))) {
+                        return Result.DENY;
+                    }
                 }
-            }
+            }catch (Exception e){ }
         }
         return Result.NEUTRAL;
     }

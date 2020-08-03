@@ -1,12 +1,9 @@
-package garbi.var;
+package garbi.filtervar;
 
-import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class AllVar {
     public static FileConfiguration[] customConfig = new FileConfiguration[1];
